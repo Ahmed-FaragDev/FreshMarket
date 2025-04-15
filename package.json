@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-      "predeploy": "npm install --legacy-peer-deps",
-  "deploy": "next build",
+    "predeploy": "npm install --legacy-peer-deps",
+    "deploy": "next build",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
