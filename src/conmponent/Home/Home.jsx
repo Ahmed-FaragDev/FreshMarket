@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import CatogorySlider from "../CatogorySlider/CatogorySlider";
 import { Circles } from 'react-loader-spinner'
-import { div } from "framer-motion/client";
 
 
 export default function Home() {
@@ -74,6 +73,8 @@ export default function Home() {
               key={product.id}
               className="flex flex-col bg-white p-5  relative group hover:shadow-2xl hover:border-2 border-green-400  transition-shadow "
             >
+             
+              <Link to={`/product/${product.id}`}>
               <img
                 src={product.imageCover}
                 alt={product.title}
@@ -106,6 +107,9 @@ export default function Home() {
                   <div className="flex flex-row "></div>
                 </div>
               </div>
+              
+              </Link>
+             
 
               <button className="bg-main rounded-full  w-1/2 p-2 m-auto invisible group-hover:visible hover:bg-main/80 transition-all duration-300 ease-in mt-5 mb-1  bottom-0 left-1/4">
                 Add to Cart

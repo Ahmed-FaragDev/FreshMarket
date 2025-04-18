@@ -61,7 +61,7 @@ export default function CatogorySlider() {
         </div>
         
       {data?.data?.data ? <Slider {...settings1} className="w-10/12 m-auto mt-10 mb-10  ">
-        {data?.data?.data.map((item) => <img src={item?.image} alt="" className="w-full h-96 object-cover" />)}
+        {data?.data?.data.map((item , index) => <img key={index}  src={item?.image} alt="" className="w-full h-96 object-cover" />)}
       </Slider>: <div className="flex justify-center items-center">  <LineWave
   visible={true}
   height="100"
