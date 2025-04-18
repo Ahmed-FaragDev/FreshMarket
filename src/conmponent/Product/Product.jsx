@@ -42,13 +42,20 @@ export default function ProductDetails() {
         <img src={product.imageCover} alt={product.title} />
 
         <div className="slider-container mt-4">
-          <Slider {...settings} className='flex-row flex w-20'>
-            {product.images.map((img, index) => (
-              <div key={index}>
-                <img src={img} alt={`product image ${index}`} />
-              </div>
-            ))}
-          </Slider>
+        <Slider {...settings}>
+        <div>
+          <img src={ "/abstract01.jpg"} />
+        </div>
+        <div>
+          <img src={ "/abstract02.jpg"} />
+        </div>
+        <div>
+          <img src={ "/abstract03.jpg"} />
+        </div>
+        <div>
+          <img src={ "/abstract04.jpg"} />
+        </div>
+      </Slider>
         </div>
       </div>
 
