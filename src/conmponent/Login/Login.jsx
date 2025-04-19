@@ -7,7 +7,7 @@ import { Circles } from 'react-loader-spinner'
 import { UserContext } from "../../Context/context";
 
 
-export default function Register() {
+export default function Login() {
   let {setUserToken} = useContext(UserContext)
   let navigate = useNavigate(); 
   const [error, setError] = useState(null);
@@ -100,7 +100,7 @@ export default function Register() {
         <input
           name="password"
           id="password"
-          ref={passwordRef}
+          
           className="border border-gray-200 rounded-l focus:outline focus:outline-sky-500"
           type="password"
           onChange={formik.handleChange}
@@ -129,12 +129,17 @@ export default function Register() {
                 visible={true}
                 />
           
-          </button> :<button
+          </button> : <button
           type="submit"
-          className="rounded-full w-2/5 p-2 mt-5 bg-main cursor-pointer"
+          className={`rounded-full w-2/5 p-2 mt-5 text-white
+    ${
+      formik.dirty && formik.isValid
+        ? "bg-main cursor-pointer"
+        : "bg-gray-400 cursor-not-allowed"
+    }`}
           disabled={!(formik.dirty && formik.isValid)}
         >
-         Login
+          Login
         </button> }
         
       </div>

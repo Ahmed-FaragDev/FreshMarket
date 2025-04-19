@@ -56,6 +56,7 @@ export default function Brands() {
       <div className='min-h-screen'>
         
     
+
    
         <div className="slider-container w-full mx-2 my-20">
           <Slider {...settings}>
@@ -68,6 +69,23 @@ export default function Brands() {
             
           </Slider>
         </div>
+        <div className="min-h-screen p-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {Brands?.map((brand) => (
+      <div
+        key={brand._id}
+        className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col items-center p-4 hover:shadow-lg transition"
+      >
+        <img
+          src={brand.image}
+          alt={brand.name}
+          className="w-full h-40 object-contain mb-4"
+        />
+        <p className="text-lg font-medium text-center">{brand.name}</p>
+      </div>
+    ))}
+  </div>
+</div>
         </div>
     
     
