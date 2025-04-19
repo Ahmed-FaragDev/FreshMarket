@@ -8,27 +8,36 @@ let headers = {
     token:UserToken
 }
 
-function GetLoggedUserCart(paras) {
-   return axios.get('https://ecommerce.routemisr.com/api/v1/cart',
-        {headers}
-    ).then((response) => response)
-    .catch((error)=>error)
-}
-function addTocart(id) {
-    const token = localStorage.getItem('userToken');
-
-    
-    return axios.post(`https://ecommerce.routemisr.com/api/v1/cart`
-        , {
-            productId:id
+function GetLoggedUserCart() {
+    let UserToken = localStorage.getItem("userToken");
+    return axios
+      .get("https://ecommerce.routemisr.com/api/v1/cart", {
+        headers: {
+          token: UserToken,
+        },
+      })
+      .then((response) => response)
+      .catch((error) => error);
+  }
+  
+  function addTocart(id) {
+    let UserToken = localStorage.getItem("userToken");
+    return axios
+      .post(
+        `https://ecommerce.routemisr.com/api/v1/cart`,
+        {
+          productId: id,
         },
         {
-            headers
+          headers: {
+            token: UserToken,
+          },
         }
-    ).then((response) => response)
-    .catch((error)=>error)
-}
-
+      )
+      .then((response) => response)
+      .catch((error) => error);
+  }
+  
 export default function CartContexProvider(props) {
     return <CartContext.Provider value={{addTocart ,GetLoggedUserCart}}>
 {props.children}
