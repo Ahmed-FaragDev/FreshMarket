@@ -24,7 +24,7 @@ export default function Cart() {
           <h1 className='text-xl'>Shop Cart</h1>
           <p className='text-main'>Cart item : {cartDetails?.numOfCartItems}</p>
           <p className='text-main'>Total Cart item : {cartDetails.data.totalCartPrice} Egp</p>
-          {cartDetails.data.products.map((product) => <div key={product.product.id} className='flex items-center justify-between'>
+          {cartDetails?.data?.products?.map((product) => <div key={product.product.id} className='flex items-center justify-between'>
             <div className='flex  md:w-6/12 items-center ' >
              <div><img  className='w-20 mb-2 me-3' src={product.product.imageCover} alt="" /></div>
               <div>

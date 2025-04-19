@@ -15,6 +15,8 @@ function GetLoggedUserCart(paras) {
     .catch((error)=>error)
 }
 function addTocart(id) {
+    const token = localStorage.getItem('userToken');
+
     
     return axios.post(`https://ecommerce.routemisr.com/api/v1/cart`
         , {
