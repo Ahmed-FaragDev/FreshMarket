@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Slider from "react-slick";
+import { Circles } from 'react-loader-spinner'
+import { CartContext } from '../../CartContext/CartContext';
+import toast from 'react-hot-toast';
+
 
 export default function ProductDetails() {
+  let { addTocart } = useContext(CartContext)
+  async function addProductToCart(id) {
+    let response = await addTocart(id)
+    if (response.data.status==='success') {
+      toast.success('product successfully added')
+    } else {
+      toast.error('Error Adding Product')
+    }
+    
+  }
   const { id } = useParams();
 
   const fetchProduct = async () => {
@@ -17,49 +31,33 @@ export default function ProductDetails() {
     queryFn: fetchProduct,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <div className="flex justify-center items-center min-h-screen">
+        <Circles
+       className="m-auto"
+        
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="circles-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        />
+      </div>
+      
   if (isError) return <p>Something went wrong</p>;
 
-  const settings = {
-    customPaging: function (i) {
-      return (
-        <a>
-          <img src={product.images[i]} alt={`thumb ${i}`} />
-        </a>
-      );
-    },
-    dots: true,
-    dotsClass: "slick-dots slick-thumb",
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
+
 
   return (
     <div className='md:flex items-center mt-20 min-h-screen gap-4 mx-3'>
-      <div className='md:w-4/12 lg-w-4/12 m-auto w-1/2'>
-        <img src={product.imageCover} alt={product.title} />
+      <div className='md:w-3/12 lg-w-4/12 m-auto w-1/2'>
+        <img className='w-8/12' src={product.imageCover} alt={product.title} />
 
-        <div className="slider-container mt-4">
-        <Slider {...settings}>
-        <div>
-          <img src={ "/abstract01.jpg"} />
-        </div>
-        <div>
-          <img src={ "/abstract02.jpg"} />
-        </div>
-        <div>
-          <img src={ "/abstract03.jpg"} />
-        </div>
-        <div>
-          <img src={ "/abstract04.jpg"} />
-        </div>
-      </Slider>
-        </div>
+       
       </div>
 
-      <div className='flex-col md:w-5/12 flex gap-2'>
+      <div className='flex-col md:w-5/12 m-auto flex gap-2'>
         <h1>{product.title}</h1>
         <p className='text-gray-400 text-sm'>{product.description}</p>
         <p>{product.category?.name}</p>
@@ -67,7 +65,7 @@ export default function ProductDetails() {
           <p>{product.price} $</p>
           <p><span>⭐</span>{product.ratingsAverage} ({product.ratingsQuantity})</p>
         </div>
-        <button className='bg-main w-full rounded-l mt-2'>Add to cart</button>
+        <button onClick={()=>addProductToCart(product.id)} className='cursor-pointer bg-main p-2 w-full rounded-l mt-2'>Add to cart</button>
       </div>
     </div>
   );

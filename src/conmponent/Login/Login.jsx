@@ -14,7 +14,7 @@ export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
  
   const emailRef = useRef();
-  const passwordRef = useRef();
+  
 
 
   async function LoginSumbit(values) {
@@ -76,7 +76,7 @@ export default function Register() {
       onSubmit={formik.handleSubmit}
       className="flex flex-col gap-5 md:w-5/12 w-9/12 m-auto py-20 mt-30"
     >
-      <h1 className="text-2xl">Register Now</h1>
+      <h1 className="text-2xl">Login Now</h1>
       <div className="flex flex-col gap-3 text-l">
        
 
@@ -106,7 +106,7 @@ export default function Register() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
-          onKeyDown={(e) => handleKeyPress(e, repasswordRef)}
+          
         />
         {formik.touched.password && formik.errors.password && (
           <div className="text-red-500 text-sm">{formik.errors.password}</div>
