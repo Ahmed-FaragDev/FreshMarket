@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Circles } from 'react-loader-spinner'
 
 
@@ -188,8 +188,10 @@ export default function Register() {
           disabled={!(formik.dirty && formik.isValid)}
         >
           Register
-        </button> }
-        
+          </button>}
+          
+       <p>Already have an account ?<Link to={'/login'}><button className="  p-2 mt-5 underline cursor-pointer underline-offset-4 decoration-green-400">Login</button></Link></p> 
+
       </div>
     </form>
     </>

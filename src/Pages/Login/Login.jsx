@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Circles } from "react-loader-spinner";
 import { UserContext } from "../../Context/auth/context";
 
@@ -82,7 +82,6 @@ export default function Login() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
-              onKeyDown={(e) => handleKeyPress(e, passwordRef)}
             />
             {formik.touched.email && formik.errors.email && (
               <div className="text-red-500 text-sm">{formik.errors.email}</div>
@@ -103,34 +102,36 @@ export default function Login() {
                 {formik.errors.password}
               </div>
             )}
-
-            {isLoading ? (
-              <button className="bg-gray-100 cursor-not-allowed rounded-full w-2/5 p-2 mt-5 flex justify-center items-center text-white">
-                <Circles
-                  className="m-auto"
-                  height="20"
-                  width="30"
-                  color="#4fa94d"
-                  ariaLabel="circles-loading"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                />
-              </button>
-            ) : (
-              <button
-                type="submit"
-                className={`rounded-full w-2/5 p-2 mt-5 text-white
+            <div className="flex items-center">
+              {isLoading ? (
+                <button className="bg-gray-100 cursor-not-allowed rounded-full w-2/5 p-2 mt-5 flex justify-center items-center text-white">
+                  <Circles
+                    className="m-auto"
+                    height="20"
+                    width="30"
+                    color="#4fa94d"
+                    ariaLabel="circles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className={`rounded-full w-2/5 p-2 mt-5 text-white
     ${
       formik.dirty && formik.isValid
         ? "bg-main cursor-pointer"
         : "bg-gray-400 cursor-not-allowed"
     }`}
-                disabled={!(formik.dirty && formik.isValid)}
-              >
-                Login
-              </button>
-            )}
+                  disabled={!(formik.dirty && formik.isValid)}
+                >
+                  Login
+                </button>
+              )}
+              <Link to={'/register'}><button className="  p-2 mt-5 underline cursor-pointer underline-offset-4 decoration-green-400">Create an account</button></Link>
+            </div>
           </div>
         </form>
       </div>
