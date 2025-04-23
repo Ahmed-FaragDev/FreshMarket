@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Slider from "react-slick";
 import Client from '../../Client';
+import Loading from "../../conmponent/Loading/Loading";
 
 export default function Brands() {
   const { data, isLoading, isError } = useQuery({

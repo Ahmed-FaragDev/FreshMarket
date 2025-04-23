@@ -7,6 +7,7 @@ import { CartContext } from '../../Context/cartContext/CartContext';
 import toast from 'react-hot-toast';
 import { useQuery } from "@tanstack/react-query";
 import Client from '../../Client';
+import Loading from "../Loading/Loading";
 
 export default function Products() {
   let { addTocart } = useContext(CartContext)
@@ -32,20 +33,7 @@ export default function Products() {
 
   if (isLoading) {
     return (
-      <>
-        <div className="flex justify-center items-center min-h-screen">
-          <Circles
-            className="m-auto"
-            height="80"
-            width="80"
-            color="#4fa94d"
-            ariaLabel="circles-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
-        </div>
-      </>
+      <Loading/>
     );
   }
 
