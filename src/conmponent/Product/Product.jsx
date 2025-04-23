@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "../../Context/cartContext/CartContext";
 import toast from "react-hot-toast";
 import Loading from "../Loading/Loading";
-import Client from "../../Client";
 
 export default function ProductDetails() {
   const { id } = useParams();

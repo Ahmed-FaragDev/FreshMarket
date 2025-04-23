@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import client from '../client';
-import { API_ENDPOINTS } from '../client/endpoints';
+
+import { API_ENDPOINTS } from '../Client/endpoints';
 export const useUsers = () => {
   const { isPending, data, error, isError } = useQuery({
     queryKey: [API_ENDPOINTS.GET_ALL_USERS],

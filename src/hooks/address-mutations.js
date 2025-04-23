@@ -1,11 +1,11 @@
-import { toast } from 'react-toastify';
-import client from '../client';
-import { API_ENDPOINTS } from '../client/endpoints';
-import { useCustomMutation } from './use-custom-mutation';
+import { toast } from "react-toastify";
+
+import { useCustomMutation } from "./use-custom-mutation";
+import { API_ENDPOINTS } from "../client/endpoints";
 
 export const useAddressMutation = (type) => {
-  const isAdd = type === 'add';
-  const isRemove = type === 'remove';
+  const isAdd = type === "add";
+  const isRemove = type === "remove";
 
   return useCustomMutation({
     mutationFn: (payload) => {
@@ -18,11 +18,11 @@ export const useAddressMutation = (type) => {
     },
 
     onSuccess: () => {
-      toast.success(isAdd ? 'Address added' : 'Address removed');
+      toast.success(isAdd ? "Address added" : "Address removed");
     },
 
     onError: (error) => {
-      toast.error(error?.message || 'Address error');
+      toast.error(error?.message || "Address error");
     },
   });
 };

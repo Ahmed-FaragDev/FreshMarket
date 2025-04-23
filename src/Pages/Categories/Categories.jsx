@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Slider from "react-slick";
 import Loading from "../../conmponent/Loading/Loading";
-
+import Client from '../../Client';
 export default function Categories() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["Categories"],

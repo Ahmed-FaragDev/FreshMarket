@@ -1,36 +1,32 @@
 import axios from "axios";
 import { APIError } from "./error";
-import { getAuthToken } from "../client/token-utils";
+import { getAuthToken } from "./token-utils";
 
 export const Axios = axios.create({
-    baseURL: 'https://ecommerce.routemisr.com/api/v1',
+  baseURL: "https://ecommerce.routemisr.com/api/v1",
 });
 
 Axios.interceptors.request.use((config) => {
-    config.headers.Apipassword = '@#$trans@#$GENIO';
-    config.headers.Authorization = `Bearer ${getAuthToken()}`;
-    return config;
+  config.headers.Apipassword = "@#$trans@#$GENIO";
+  config.headers.Authorization = `Bearer ${getAuthToken()}`;
+  return config;
 });
 export class HttpClient {
   static async get(url, params) {
     try {
       const response = await Axios.get(url, params);
-      
+
       return response.data;
     } catch (error) {
       throw new APIError(error?.response?.data);
     }
   }
 
-  static async post(
-    url,
-    data,
-    config,
-  ) {
+  static async post(url, data, config) {
     try {
-      const response = await Axios.post(url, data, config);                          
+      const response = await Axios.post(url, data, config);
       return response.data;
-    } catch (error) {                              
+    } catch (error) {
       throw new APIError(error?.response?.data);
     }
   }
@@ -44,11 +40,7 @@ export class HttpClient {
     }
   }
 
-  static async patch(
-    url,
-    data,
-    config,
-  ) {
+  static async patch(url, data, config) {
     try {
       const response = await Axios.patch(url, data, config);
       return response.data;
@@ -60,10 +52,9 @@ export class HttpClient {
   static async delete(url, config) {
     try {
       const response = await Axios.delete(url, config);
-      
+
       return response.data;
     } catch (error) {
-      
       throw new APIError(error?.response?.data);
     }
   }

@@ -5,9 +5,8 @@ import { Circles } from "react-loader-spinner";
 import  { useContext } from 'react';
 import { CartContext } from '../../Context/cartContext/CartContext';
 import toast from 'react-hot-toast';
-import Client from "../../Client";
 import { useQuery } from "@tanstack/react-query";
-
+import Client from '../../Client';
 
 export default function Products() {
   let { addTocart } = useContext(CartContext)
@@ -51,7 +50,7 @@ export default function Products() {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div>{error.message}</div>;
   }
   
   const products = data?.data ?? [];

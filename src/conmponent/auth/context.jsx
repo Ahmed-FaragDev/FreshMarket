@@ -1,13 +1,13 @@
-import React, { createContext, useContext, useState } from 'react';
-import { checkHasAuthToken, removeAuthToken, setAuthToken } from '../../client/token-utils';
-
+import React, { createContext, useContext, useState } from "react";
+import {
+  checkHasAuthToken,
+  removeAuthToken,
+  setAuthToken,
+} from "../../Client/token-utils";
 
 const AuthContext = createContext(undefined);
 
-
-export const UserContextProvider = ({
-  children,
-}) => {
+export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthorized, setIsAuthorized] = useState(checkHasAuthToken());
 
@@ -17,7 +17,7 @@ export const UserContextProvider = ({
     authorize(data) {
       setUser(data.user);
       setIsAuthorized(true);
-      setAuthToken(data.token)
+      setAuthToken(data.token);
     },
     unauthorize() {
       setUser(null);
@@ -34,7 +34,7 @@ export const UserContextProvider = ({
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useUserContext must be used within a UserContextProvider');
+    throw new Error("useUserContext must be used within a UserContextProvider");
   }
   return context;
 };

@@ -1,5 +1,4 @@
 import { toast } from 'react-toastify';
-import client from '../client';
 import { API_ENDPOINTS } from '../client/endpoints';
 import { useCustomMutation } from './use-custom-mutation';
 

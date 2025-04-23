@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import client from '../client';
 import { useAuth } from '../Components/auth/context';
-import { API_ENDPOINTS } from '../client/endpoints';
+import { API_ENDPOINTS } from '../Client/endpoints';
 
 export const useMe = () => {
   const { isAuthorized } = useAuth();
