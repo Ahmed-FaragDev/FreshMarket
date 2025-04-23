@@ -1,4 +1,5 @@
-import { API_ENDPOINTS } from './endpoints';
+
+import { API_ENDPOINTS } from '../Client/endpoints';
 import { HttpClient } from './http-client';
 
 class Client {
