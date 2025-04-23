@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../CartContext/CartContext";
+import { CartContext } from "../../Context/cartContext/CartContext";
 import { Circles } from "react-loader-spinner";
 
 export default function Cart() {

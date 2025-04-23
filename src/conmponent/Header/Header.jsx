@@ -1,7 +1,7 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import logo from "../../images/freshcart-logo.svg";
 import { useContext } from "react";
-import { UserContext } from "../../Context/context";
+import { UserContext } from "../../Context/auth/context";
 
 export default function Header() {
   let { userToken, setUserToken } = useContext(UserContext);

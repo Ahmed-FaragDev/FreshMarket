@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { CartContext } from "../../CartContext/CartContext";
+import { CartContext } from "../../Context/cartContext/CartContext";
 import toast from "react-hot-toast";
 import Loading from "../Loading/Loading";
 import Client from "../../Client";

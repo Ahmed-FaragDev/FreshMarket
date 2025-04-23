@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import { Outlet } from 'react-router-dom'
-import { UserContext } from '../../Context/context'
+import { UserContext } from '../../Context/auth/context'
 
 export default function Layout() {
   let { setUserToken } = useContext(UserContext);

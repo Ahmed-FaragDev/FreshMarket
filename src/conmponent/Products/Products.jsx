@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Circles } from "react-loader-spinner";
 import  { useContext } from 'react';
-import { CartContext } from '../../CartContext/CartContext';
+import { CartContext } from '../../Context/cartContext/CartContext';
 import toast from 'react-hot-toast';
 import Client from "../../Client";
 import { useQuery } from "@tanstack/react-query";
